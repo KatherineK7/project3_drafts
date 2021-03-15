@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='images/favicon.ico')}}">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+  <!-- Header CSS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <!-- D3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
+  <!-- Custom JavaScript -->  
+  <script src="{{url_for('static', filename='js/app.js')}}" defer></script>
+  
+
+  <title>Anyone Can Cook</title>
+</head>
+<body>
+  <!--<div class="header">
+    <nav class="navbar navbar-expand-lg custom-toggler">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="./index.html" style="color: rgb(12, 3, 3);">Home Page</a>          
+    </div>   
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>-->
+
+    </nav>
+  </div>
+  <!-- Start of container -->
+  <h1 class="description-header">Anyone Can Cook!</h1>
+  <!--<hr class="description-hr"/> -->
+  <div class="container-fluid navBuffer">
+    <section class="row">
+      <div class="col-md-12 shade" id='white-background'>
+          <div class="row">
+            <div class="col-md-4">
+              <img src="{{url_for('static', filename='images/trio1.jpg')}}" alt="" id="description-image" width="100%" height="100%"/>
+            </div>   
+            <div class="col-md-4">
+              <p id= "border">New to cooking and looking to spice up your weekly menus? </p>
+              <br/>
+              <p id="border">Anyone Can Cook is here to help you pick exciting recipes and build your grocery list for the week. Start searching below!</p>
+              <br/>
+              <p id="border">Start finding some recipes now by entering some search terms!</p>  
+            </div>
+            <div class="col-md-4">
+              <img src="{{url_for('static', filename='images/trio2.jpg')}}" alt="" id="description-image" width="100%" height="100%"/>
+            </div>
+          </div>
+          </div>  
+      </div>
+    </section>
+         <!-- Start of Data Container with Filter -->
+    <div class="container-fluid" id="container2"> <!-- container -->     
+      <div class="row"> <!-- container row -->
+
+        <!-- Start of filter panel -->
+        <div class="col-md-2">
+          <aside class="filters", id="filter-background">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form id="filter-form">
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                    
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="query">Item</label>
+                        <input class="form-control" id="query" type="text" placeholder="e.g. pasta">                    
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="cuisine">Cuisine</label>
+                        <select id="cuisine">
+                        <option value="&">--choose one--</option>
+                        <option value="American">American</option>
+                        <option value="African">African</option>
+                        <option value="British">British</option>
+                        <option value="Cajun">Cajun</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="Eastern European">Eastern European</option>
+                        <option value="European">European</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Greek">Greek</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Irish">Irish</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Jewish">Jewish</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Latin American">Latin American</option>
+                        <option value="Mediterranean">Mediterranean</option>
+                        <option value="Middle Eastern">Middle Eastern</option>
+                        <option value="Nordic">Nordic</option>
+                        <option value="Southern">Southern</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Vietnamese">Vietnamese</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="calories">Calories</label>
+                        <input class="form-control" id="calories" type="text" placeholder="e.g. 500">
+                      </li>
+                      <li class="filter list-group-item", id="user-input">
+                        <label for="type_of_recipe">Type of Dish</label>
+                        <select id="type_of_recipe">
+                        <option value="&">--choose one--</option>
+                        <option value="maincourse">main course</option>                      
+                        <option value="sidedish">side dish</option>
+                        <option value="dessert">dessert</option>
+                        <option value="appetizer">appetizer</option>
+                        <option value="salad">salad</option>
+                        <option value="bread">bread</option>
+                        <option value="breakfast">breakfast</option>
+                        <option value="soup">soup</option>
+                        <option value="beverage">beverage</option>
+                        <option value="sauce">sauce</option>
+                        <option value="marinade">marinade</option>
+                        <option value="fingerfood">fingerfood</option>
+                        <option value="snack">snack</option>
+                        <option value="drink">drink</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="shape">Ready in Minutes</label>   <!--THIS ID SHOULD BE CHANGED-->
+                        <input class="form-control" id="cookingMinutes" type="text" placeholder="e.g. 30">
+                      </li>
+
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+                      <!-- PROJECT 3 ADDITION BEGIN -->
+                      <li class="filter list-group-item">
+                        <label for="cuisine">Meal Planner<br>Day of Week</label>
+                        <select id="dayofweek">
+                        <option value="&">--choose day of week--</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>                        
+                        </select>
+                      </li>
+                      <!-- PROJECT 3 ADDITION END -->
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+                      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+
+
+                    </ul>
+                  </div>
+
+                  <!-- 
+                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  -->
+                  <button id="weekplan-btn" type="button" class="btn btn-default">Add to Meal Planner</button>
+                  <button id="reset-btn" type="button" class="btn btn-default">Reset Selections</button>
+                </form>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <!-- End of filter panel -->
+
+
+        <!-- Start of recipe data table -->
+        <div class="col-md-10">
+          <div id="table-area" class="val">
+            <table id="ufo-table" class="table table-striped">   <!--THIS ID SHOULD BE CHANGED-->
+              <thead>
+                <tr>
+                <th class="table-head"></th>
+                <th class="table-head">Recipe ID</th>
+                <th class="table-head">Recipe Title</th>
+                <th class="table-head">Recipe Link</th>
+                <th class="table-head">Likes</th>
+                <th class="table-head">Health Score</th>
+                <th class="table-head">Calories</th>
+                <th class="table-head">Carbs</th>
+                <th class="table-head">Servings</th>
+                <th class="table-head">Ready in Minutes</th>
+                </tr>
+              </thead>
+              <tbody id='ufo-tbody'></tbody>   <!--THIS ID SHOULD BE CHANGED-->
+            </table>
+          </div>
+        </div>
+        <!-- End of recipe data table -->
+
+
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- PROJECT 3 ADDITION BEGIN -->
+        <!-- Start of data table -->
+        
+          <div class="col-md-10">
+          <div id="table-area" class="val">
+            <table id="weekplan-table" class="table table-striped">   
+              <thead>
+                <tr>
+                <th class="table-head"></th>
+                <th class="table-head" id='th-sunday'>Sunday</th>
+                <th class="table-head" id='th-monday'>Monday</th>
+                <th class="table-head" id='th-tuesday'>Tuesday</th>
+                <th class="table-head" id='th-wednesday'>Wednesday</th>
+                <th class="table-head" id='th-thursday'>Thursday</th>
+                <th class="table-head" id='th-friday'>Friday</th>
+                <th class="table-head" id='th-saturday'>Saturday</th>
+                </tr>
+              </thead>
+              <tbody id='weekplan-tbody'></tbody> 
+              <tr>
+                <td></td>
+                <td id='td-sunday'></td>
+                <td id='td-monday'></td>
+                <td id='td-tuesday'></td>
+                <td id='td-wednesday'></td>
+                <td id='td-thursday'></td>
+                <td id='td-friday'></td>
+                <td id='td-saturday'></td>      
+              </tr>
+            </table>
+          </div>
+        </div>      
+        <!-- End of data table -->
+        <!-- PROJECT 3 ADDITION END -->
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+
+
+        <button id="checkbox-btn" class="btn btn-default" href="page2.html">Add to Grocery List</button>
+      </div> <!-- container row -->
+    </div> <!-- container -->     
+    <!-- End of Data Container with Filter -->
+      </div>
+    </section>
+  </div>
+  </body>
+</html>

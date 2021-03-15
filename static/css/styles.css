@@ -1,0 +1,512 @@
+/*html {
+  text-align: center;
+  color: rgb(51, 153, 255);
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}*/
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+/* 'anyone can cook' header*/
+h1 {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  font-size: 175px;
+  font-weight: 800;
+  color: rgb(46, 153, 117);
+  background-image: url("/static/images/dataframe-light.png");
+  opacity: .8;
+}
+
+/* change font everything */
+#white-background {
+  color: darkgoldenrod;
+  font-size: 35px;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+#bg-color {
+  color:white;
+}
+
+#border {
+  border:2px; border-style:solid; border-color:rgb(46, 153, 177);
+}
+
+#container2 {
+  background-image: url("/static/images/dataframe-light.png");
+  opacity: .8;
+  font-family: 'Dancing Script', cursive;
+  font-size: 16px;
+  color: darkgoldenrod;
+}
+
+/* changes the background color of 'Filter Search' box*/
+#filter-background {
+  background-color: rgb(46, 153, 117);
+}
+
+/* changes the font size of dropdown titles*/
+#user-input {
+  font-size: 14px; 
+  background-color: rgb(46, 153, 117);
+  font-family: 'Caveat', cursive;
+}
+
+/* changes the background color of user input fields*/
+#dropdown-bg-color {
+  background-color: rgb(96, 215, 175);
+}
+
+/* changes the color of the words: Item, Calories, Type of Dish, Ready in Minutes*/
+#filters {
+  color:darkgoldenrod;
+  font-size: 14px;
+  font-family: 'Caveat', cursive;
+}
+
+/* changes font everything inside user input fields*/
+#datetime {
+  font-size: 16px;
+  background-color: rgb(242,237,218);
+  font-family: 'Caveat', cursive;
+}
+
+/*  changes font everything in drop downs*/
+#selDataset {
+  font-size: 16px;
+  padding-right: 30px;
+  background-color: rgb(242,237,218);
+  font-family: 'Caveat', cursive;
+}
+
+#selDataset2 {
+    font-size: 16px;
+    padding-right: 30px;
+    background-color: rgb(242,237,218);
+}
+
+#breakColor {
+  background-color: rgb(242,237,218);
+}
+
+
+
+/*
+#filter-btn {
+  background-color: rgb(242,237,218);
+  margin-bottom: 25px;
+  margin-left: 30px;
+  margin-right: 45px;
+  font-family: 'Dancing Script', cursive;
+}
+
+#submit {
+  background-color: rgb(96, 215, 175);
+  font-size: 16px;
+  margin-bottom: 25px;
+  margin-left: 15px;
+  margin-top: 25px;
+  font-family: 'Dancing Script', cursive;
+}
+*/
+
+/* changes the background color of the table*/
+#table-area {
+  background-color: rgb(248, 224, 203);
+}
+ /* changes font size, font style, font everything for table*/
+#ufo-table {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgba(6, 51, 36);
+}
+
+/* PROJECT 3 ADDITION */
+ /* changes font size, font style, font everything for table*/
+ #weekplan-table {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgba(6, 51, 36);
+}
+
+#grocery-table {
+background-color: rgb(248, 224, 203);
+/*font-family: 'Caveat', cursive; */
+font-size: 20px;
+}
+
+thead {
+  background-color: rgb(245, 130, 30, 0.7);
+
+}
+
+img {
+  object-fit: cover;
+}
+
+
+/*.description-header {
+  font-family: 'Papyrus', serif;
+*/
+
+/*h1 {
+  padding: 20px 0 10px 0;
+  margin: 0;
+  font-size: 28px;
+  color: rgb(20, 247, 247);
+  text-align: left;
+  font-family: 'Papyrus', Times, serif;
+  font-weight: 600;
+}*/
+
+/*h2 {
+  padding: 20px 0;
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color:rgb(12, 150, 127);
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}*/
+
+/*h3 {
+  padding: 20px 0 10px 0;
+  margin: 0;
+  font-size: 26px;
+  color:rgb(12, 150, 127);
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}*/
+
+/*h5 {
+  padding: 10px 0;
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 25px;
+  color:rgb(12, 150, 127);
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}*/
+
+/*.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}*/
+
+/*.navBuffer {
+  padding-top: 25px;
+}*/
+
+/* https://stijndewitt.com/2018/06/12/pure-css-drop-shadow-on-scroll/ */
+
+/*.header {
+  position: sticky;
+  top: -16px; 
+  z-index: 1;
+  height: 100px; /* 50 + 16 
+  -webkit-backface-visibility: hidden;
+}
+
+.header::before,
+.header::after {
+  content: '';
+  display: block;
+  height: 16px;
+  position: sticky;
+}
+
+.header::before {
+  top: 34px; /* 50 - 16 
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+}
+
+.header::after {
+  background: lightgrey;
+  top: 0;
+  z-index: 2;
+}/*
+
+
+/*
+.navbar{
+  position: sticky;
+  top: 0px;
+  height: 50px;
+  width: 100%;
+  padding: 0;
+  margin-top: -16px;
+  z-index: 3;
+  background-color: rgb(231, 21, 21);
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.navbar button {
+  border: white solid 1px;
+  margin: 5px 10px 5px 5px;
+}
+
+.navbar-toggler-icon {
+  border-color: white;
+}
+
+.navbar-header {
+  margin: 0 10px;
+}
+
+.navbar-brand {
+  background-color: rgb(12, 150, 127);
+  color: white;
+  font-weight: bold;
+  margin: 0 auto !important;
+  padding: 10px !important;
+}
+
+.navbar-nav {
+  background: white;
+}
+
+.navbar-nav a.nav-link {
+  padding-left: 5px;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+.navbar-nav:nth-child(1) {
+  padding-right: 10px !important;
+}
+
+.nav-item a {
+  font-family: sans-serif;
+  color: #828c94;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.nav-item.dropdown.show .nav-link {
+  background-color: #d3d3d3;
+  color: #212529;
+}
+
+.dropdown-menu.show {
+  max-height: 500px;
+  transition: max-height 1s ease-in-out;
+}
+
+.dropdown-menu {
+  display: block;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: none;
+  transition: max-height 0.75s ease-in-out;
+}
+
+a.dropdown-item {
+  padding-left: 15px;
+}
+
+.dropdown-toggle::after {
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.nav-item.dropdown.show .dropdown-toggle::after {
+  transform: rotate(-180deg);
+}
+
+.imageNav-header {
+  font-size: 25px;
+  color:rgb(12, 150, 127);
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+
+a img {
+  margin: 4px;
+  box-sizing: content-box;
+  height: 44%;
+  width: 44%;
+}
+
+.viz-info{
+  background-color: white;
+}
+
+.vizPreviews {
+  height: 100%;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.imgBorder {
+  border: solid 2px rgb(12, 150, 127);
+  border-radius: 3px;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255,255,255);
+} 
+
+.textCenter {
+  text-align: center;
+}
+
+.rowHeightFull {
+  height: 100%;
+}
+
+.col-md-4.shade, .col-md-7.shade, .col-md-12.shade {
+  box-shadow: 0px 2px 15px -7px rgba(0,0,0,0.5);
+  margin-bottom: 56px;
+}
+
+#description-image {
+  height: 100%;
+  width: 100%;
+}
+
+#viz1 {
+  border: 5px solid #555;
+}
+
+#container{
+  background-color: grey 
+}
+
+th {
+  text-align: left;
+}
+
+th:nth-child() {
+  display: table-cell;
+}
+
+td:nth-child() {
+  display: table-cell;
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 1199px) and (min-width: 992px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991px) and (min-width: 768px) { 
+  .navbar{
+    background-color:rgb(12, 150, 127);
+  }
+  
+  .navbar-nav {
+    padding: 20px;
+  }
+
+  .col-md-6 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+
+  th:nth-child(n+8) {
+    display: none;
+  }
+
+  td:nth-child(n+8) {
+    display: none;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) and (min-width: 576px) {  
+  .navbar{
+    background-color:rgb(12, 150, 127);
+  }
+  
+  .navbar-nav {
+    padding: 20px;
+  }
+
+  th:nth-child(n+5) {
+    display: none;
+  }
+
+  td:nth-child(n+5) {
+    display: none;
+  }
+}
+
+/* Broken devices (super small devices like Blackberries) */
+@media (max-width: 575px) {  
+  body {
+    min-width: 250px;
+    background-color: white;
+  }
+
+  h1 {
+    padding: 10px 0 10px 0;
+  }
+
+  .header::after {
+    background: white;
+  }
+
+  .navBuffer {
+    padding-top: 0px;
+  }
+
+  .navbar{
+    background-color:rgb(12, 150, 127);
+  }
+  
+  .navbar-nav {
+    padding: 20px;
+  }
+
+  .col-md-4.shade, .col-md-7.shade, .col-md-12.shade {
+    box-shadow: 0px 2px 15px -7px rgba(0,0,0,0);
+    margin-bottom: 25px;
+  }
+
+  th:nth-child(n+5) {
+    display: none;
+  }
+
+  td:nth-child(n+5) {
+    display: none;
+  }
+}

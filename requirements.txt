@@ -1,0 +1,11 @@
+# Definitely needed for Flask-powered Web Apps
+gunicorn
+Jinja2
+Werkzeug
+
+# Needed for this specific app
+Flask
+pymysql
+pandas
+json
+sqlalchemy
