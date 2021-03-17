@@ -1,9 +1,4 @@
-// from data.js
-// var tableData = data;
-
-
-// Identify the table and tbody
-var tbody = d3.select('#ufo-tbody');
+var tbody = d3.select('#recipetable');
 
 /////////////////////////////////////////////////////////////////////////
 // PROJECT 3 ADDITION ///////////////////////////////////////////////////
@@ -42,19 +37,20 @@ function buildTable() {
             };           
 
             row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['recipe_id']}`).attr('title', `${record['recipe_title']}`).attr('class', 'recipe-checkbox');
-            row.append('td').text(record['recipe_id']);
-            row.append('td').text(record['recipe_title']).attr('title', `${record['recipe_title']}`);
+            // row.append('td').text(record['recipe_id']);
+            // row.append('td').text(record['recipe_title']).attr('title', `${record['recipe_title']}`);
             row.append('td').append('a')
                 .attr('href', record['source_url'])
                 .attr('target', '_blank')
-                .text(record['source_url']);
-            row.append('td').text(record['likes']);
-            row.append('td').text(record['health_score']);
+                .text(record['recipe_title']);
+            // row.append('td').text(record['likes']);
+            // row.append('td').text(record['health_score']);
             row.append('td').text(record['calories_serving']);
-            row.append('td').text(record['carbohydrates_serving']);
+            // row.append('td').text(record['carbohydrates_serving']);
             row.append('td').text(record['servings']);
             row.append('td').text(record['cooking_minutes']);
             console.log(record)
+            console.log("work")
 
         });
 
@@ -68,6 +64,7 @@ function buildTable() {
     });
 };
 
+buildTable()
 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
@@ -85,17 +82,17 @@ function refreshTable(data) {
     data.forEach(record => {
     var row = tbody.append('tr');
 ////logic: if checked -- identify the status as checked and if not set status to unchecked; add a status true or flase to records pulled from API
-        row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['recipe_id']}`).attr('title', `${record['recipe_title']}`).attr('class', 'recipe-checkbox');            
-        row.append('td').text(record['recipe_id']);
-        row.append('td').text(record['recipe_title']);
+        row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['recipe_id']}`).attr('title', `${record['recipe_title']}`).attr('class', 'recipe-checkbox');
+        // row.append('td').text(record['recipe_id']);
+        // row.append('td').text(record['recipe_title']).attr('title', `${record['recipe_title']}`);
         row.append('td').append('a')
-                .attr('href', record['source_url'])
-                .attr('target', '_blank')
-                .text(record['source_url']);
-        row.append('td').text(record['likes']);
-        row.append('td').text(record['health_score']);
+            .attr('href', record['source_url'])
+            .attr('target', '_blank')
+            .text(record['recipe_title']);
+        // row.append('td').text(record['likes']);
+        // row.append('td').text(record['health_score']);
         row.append('td').text(record['calories_serving']);
-        row.append('td').text(record['carbohydrates_serving']);
+        // row.append('td').text(record['carbohydrates_serving']);
         row.append('td').text(record['servings']);
         row.append('td').text(record['cooking_minutes']);
         console.log(record)
@@ -137,11 +134,11 @@ function addCheckedData(){
 };
 
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// FUNCTION recipemetadataAPIreturn()
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // FUNCTION recipemetadataAPIreturn()
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
 function recipemetadataAPIreturn(){
     // Create a copy of tableData specifically for filtering
@@ -152,8 +149,8 @@ function recipemetadataAPIreturn(){
     var query = d3.select('#query').property('value');
     var cuisine = d3.select('#cuisine').property('value');
     var type_of_recipe = d3.select('#type_of_recipe').property('value');
-    var calories = d3.select('#calories').property('value');    
-    var cookingMinutes = d3.select('#cookingMinutes').property('value');
+    // var calories = d3.select('#calories').property('value');    
+    // var cookingMinutes = d3.select('#cookingMinutes').property('value');
 
     var filterFields
 
@@ -162,8 +159,8 @@ function recipemetadataAPIreturn(){
         'query': query,
         'cuisine': cuisine,
         'type_of_recipe': type_of_recipe, 
-        'calories': calories,
-        'cookingMinutes': cookingMinutes
+        // 'calories': calories,
+        // 'cookingMinutes': cookingMinutes
     }
 
     // Remove empty keys from the list of filters to search
@@ -182,7 +179,7 @@ function recipemetadataAPIreturn(){
     // RETURNS query results from Spoonacular API via Flask Flask API/recipemetadata route
     // which POPULATES the returned data into our page 1 table using refreshTable() function
 
-    d3.json(`/api/recipemetadata?query=${query}&cuisine=${cuisine}&cookingMinutes=${cookingMinutes}&calories=${calories}&type_of_recipe=${type_of_recipe}&`, function(data){
+    d3.json(`/api/recipemetadata?query=${query}&cuisine=${cuisine}&type_of_recipe=${type_of_recipe}&`, function(data){
         console.log(data);
         refreshTable(data); 
     });
@@ -190,13 +187,13 @@ function recipemetadataAPIreturn(){
 }
 
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// FUNCTION formReset()
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // FUNCTION formReset()
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
-// Clear out input fields in the Filter Form, wipe the Table, and rebuild the Table with pristine original data
+// // Clear out input fields in the Filter Form, wipe the Table, and rebuild the Table with pristine original data
 function formReset() {
     document.getElementById("filter-form").reset(); 
     tbody.html('');
@@ -204,14 +201,15 @@ function formReset() {
 };
 
 
-/////////////////////////////////////////////////////////////////////////
-// PROJECT 3 ADDITION ///////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// FUNCTION addRecipeWeekplan()
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+
+// /////////////////////////////////////////////////////////////////////////
+// // PROJECT 3 ADDITION ///////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // FUNCTION addRecipeWeekplan()
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
 function addRecipeWeekplan() {
     
@@ -269,183 +267,183 @@ function addRecipeWeekplan() {
 
 };
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// EVENT LISTENERS
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // EVENT LISTENERS
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
-// Call the function to initially load the table
-buildTable();
+// // Call the function to initially load the table
+// buildTable();
 
-/////////////////////////////////////////////////////////////////////////
-// PROJECT 3 ADDITION ///////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // PROJECT 3 ADDITION ///////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 test = d3.selectAll('.recipe-checkbox');
 console.log(test);
 
-/* sample code to make your program wait */
-// setTimeout(function(){
-//     test = d3.selectAll('.recipe-checkbox');
-//     console.log(test);
+// /* sample code to make your program wait */
+// // setTimeout(function(){
+// //     test = d3.selectAll('.recipe-checkbox');
+// //     console.log(test);
 
-// }, 5000)
+// // }, 5000)
 
-// 20210312 - added this function becuase checkboxes are created in both buildTable() and refreshTable() functions
+// // 20210312 - added this function becuase checkboxes are created in both buildTable() and refreshTable() functions
 function activateTableEventListeners() {
     checkbox = d3.selectAll('.recipe-checkbox');    
     checkbox.on('click', addCheckedData);
 };
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
-// Identify web elements on the page
+// // Identify web elements on the page
 filterbtn = d3.select('#filter-btn');
 weekplanbtn = d3.select('#weekplan-btn');  //////////// PROJECT3 ADDITION
 resetbtn = d3.select('#reset-btn');
 queryfield = d3.select('#query');
 cuisinefield = d3.select('#cuisine');
 typeofrecipefield = d3.select('#type_of_recipe');
-calories = d3.select('#calories');
-cookingminutesfield = d3.select('#cookingMinutes');
+// calories = d3.select('#calories');
+// cookingminutesfield = d3.select('#cookingMinutes');
 
-// Add event listeners to the web elements
+// // Add event listeners to the web elements
 filterbtn.on('click', recipemetadataAPIreturn);
 weekplanbtn.on('click', addRecipeWeekplan); //////////// PROJECT3 ADDITION
 resetbtn.on('click', formReset);
 queryfield.on('change', recipemetadataAPIreturn);
 cuisinefield.on('change', recipemetadataAPIreturn);
 typeofrecipefield.on('change', recipemetadataAPIreturn);
-calories.on('change', recipemetadataAPIreturn);
-cookingminutesfield.on('change', recipemetadataAPIreturn);
+// calories.on('change', recipemetadataAPIreturn);
+// cookingminutesfield.on('change', recipemetadataAPIreturn);
 
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// AWE SHUCKS NEW NAME!!!! -- ADD VALUES FROM CHECKED BOXES TO GROCERY LIST
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // AWE SHUCKS NEW NAME!!!! -- ADD VALUES FROM CHECKED BOXES TO GROCERY LIST
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
-console.log('recipeIDs2');
-d3.select("#checkbox-btn").on("click", function() {
+// console.log('recipeIDs2');
+// d3.select("#checkbox-btn").on("click", function() {
 
-    console.log('clicked btn');
+//     console.log('clicked btn');
 
-    recipeIDsToPage2 = [];
-
-
-    recipeIDs2 = d3.select('#weekplan-table').selectAll('p');
-    console.log(recipeIDs2);
-
-    recipeIDs2.each(function() {
-        recipeIDsToPage2.push(this.id);
-    });
-
-    console.log('this is what you will pass to the next page');
-    console.log(recipeIDsToPage2);
+//     recipeIDsToPage2 = [];
 
 
-    recipe_ids = recipeIDsToPage2.toString();
+//     recipeIDs2 = d3.select('#weekplan-table').selectAll('p');
+//     console.log(recipeIDs2);
 
-    // try to go another page
-    window.location.href = `/page2?recipe_ids=${recipe_ids}`;    
+//     recipeIDs2.each(function() {
+//         recipeIDsToPage2.push(this.id);
+//     });
 
-});
+//     console.log('this is what you will pass to the next page');
+//     console.log(recipeIDsToPage2);
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// FUNCTION ingredientsAPIreturn()
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
 
-function ingredientsAPIreturn(selectedRecipeIDs){
-    // Create a copy of tableData specifically for filtering
+//     recipe_ids = recipeIDsToPage2.toString();
+
+//     // try to go another page
+//     window.location.href = `/page2?recipe_ids=${recipe_ids}`;    
+
+// });
+
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // FUNCTION ingredientsAPIreturn()
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+
+// function ingredientsAPIreturn(selectedRecipeIDs){
+//     // Create a copy of tableData specifically for filtering
    
-    var ingredientsArray = []
-    selectedRecipeIDs.forEach(recipeID => {
-        d3.json(`/api/ingredients?id=${recipeID}&`, function(ingredientsReturn){
-            console.log("---returned ingredients from recipe query--");
-            console.log(ingredientsReturn);
-            ingredientsArray.push(ingredientsReturn);
-            console.log("---should return ingredientsArray---");
-            console.log(ingredientsArray);
-        });
-    });
+//     var ingredientsArray = []
+//     selectedRecipeIDs.forEach(recipeID => {
+//         d3.json(`/api/ingredients?id=${recipeID}&`, function(ingredientsReturn){
+//             console.log("---returned ingredients from recipe query--");
+//             console.log(ingredientsReturn);
+//             ingredientsArray.push(ingredientsReturn);
+//             console.log("---should return ingredientsArray---");
+//             console.log(ingredientsArray);
+//         });
+//     });
 
     
-};
+// };
 
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-// FUNCTION buildGroceriesTable()
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
+// // FUNCTION buildGroceriesTable()
+// /////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 
-// Create function to generate and populate the table
-function buildGroceriesTable() {
+// // Create function to generate and populate the table
+// function buildGroceriesTable() {
 
-    // Identify the table and tbody
-    var tbody2 = d3.select('#grocery-tbody');
+//     // Identify the table and tbody
+//     var tbody2 = d3.select('#grocery-tbody');
 
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipe_ids = urlParams.get('recipe_ids');
-    console.log(`page 2:  ${recipe_ids}`);
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const recipe_ids = urlParams.get('recipe_ids');
+//     console.log(`page 2:  ${recipe_ids}`);
 
-    // INGREDIENTS DATA API CALL
-    d3.json(`/api/getIngredientList?recipe_ids=${recipe_ids}`, function(groceries) {
-        console.log(' --- Ingredient data from /api/ingredients --- ')
-        console.log(groceries);
+//     // INGREDIENTS DATA API CALL
+//     d3.json(`/api/getIngredientList?recipe_ids=${recipe_ids}`, function(groceries) {
+//         console.log(' --- Ingredient data from /api/ingredients --- ')
+//         console.log(groceries);
 
-        groceries.forEach(record => {
-            console.log('this is going in the table');
-            console.log(record);
-            var row = tbody2.append('tr');
-            ////logic: if checked -- identify the status as checked and if not set status to unchecked; add a status true or flase to records pulled from API
-                // function that counts the number of recipes and then assigns an number incrementing by 1
+//         groceries.forEach(record => {
+//             console.log('this is going in the table');
+//             console.log(record);
+//             var row = tbody2.append('tr');
+//             ////logic: if checked -- identify the status as checked and if not set status to unchecked; add a status true or flase to records pulled from API
+//                 // function that counts the number of recipes and then assigns an number incrementing by 1
                 
-                row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['ingredient']}`).attr('class', 'ingredient-checkbox');
-                // row.append('td').text(record['recipe_title']);
-                row.append('td').text(record['ingredient']);
-                // row.append('td').text(record['price']);
-                row.append('td').text(record['ingredient_title']);
-                // row.append('td').text(record['size']);            
-                console.log(record);
+//                 row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['ingredient']}`).attr('class', 'ingredient-checkbox');
+//                 // row.append('td').text(record['recipe_title']);
+//                 row.append('td').text(record['ingredient']);
+//                 // row.append('td').text(record['price']);
+//                 row.append('td').text(record['ingredient_title']);
+//                 // row.append('td').text(record['size']);            
+//                 console.log(record);
     
-        });
-    });
-}
+//         });
+//     });
+// }
 
-var cardrow = d3.select("#cardrow")
+// var cardrow = d3.select("#cardrow")
 
-function cardMaker() {
+// function cardMaker() {
     
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipe_ids = urlParams.get('recipe_ids');
-    console.log(`page 2:  ${recipe_ids}`);
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const recipe_ids = urlParams.get('recipe_ids');
+//     console.log(`page 2:  ${recipe_ids}`);
 
-    // var test = recipe_ids.split(',');
-    // console.log(test);
-    // var newTest = [];
-    // test.forEach(recipe_id =>{
-    //     newTest.push(parseInt(recipe_id))
-    // });
+//     // var test = recipe_ids.split(',');
+//     // console.log(test);
+//     // var newTest = [];
+//     // test.forEach(recipe_id =>{
+//     //     newTest.push(parseInt(recipe_id))
+//     // });
 
-    d3.json(`/api/getCards?recipe_ids=${recipe_ids}`, function(recipes){
-        recipes.forEach(record => {
-            // cardhead.text(record.recipe_title);
-            var newColumn = cardrow.append('div').attr("class", "col-md-3");
-            var newCard = newColumn.append('div').attr("class", "card").attr("style", "width: 18rem;");
-            newCard.append('img').attr("class", "card-image-top").attr("src", record.image)
-            newCard.append('div').attr("class", "card-header").text(record.recipe_title)
-            var cardlist = newCard.append('ul').attr("class", "list-group list-group-flush")
-            cardlist.append('li').attr("class", "list-group-item").text(`Cooktime: ${record.cooking_minutes} mins`);
-            cardlist.append('li').attr("class", "list-group-item").text(`Servings: ${record.servings}`);
-            cardlist.append('li').attr("class", "list-group-item").text(record.steps[0]);
-            console.log(record.recipe_steps)
-            console.log("please work")
-                    // pic.attr("src", record.image).attr("class", "card-img-top");
-            });
-            });
+//     d3.json(`/api/getCards?recipe_ids=${recipe_ids}`, function(recipes){
+//         recipes.forEach(record => {
+//             // cardhead.text(record.recipe_title);
+//             var newColumn = cardrow.append('div').attr("class", "col-md-3");
+//             var newCard = newColumn.append('div').attr("class", "card").attr("style", "width: 18rem;");
+//             newCard.append('img').attr("class", "card-image-top").attr("src", record.image)
+//             newCard.append('div').attr("class", "card-header").text(record.recipe_title)
+//             var cardlist = newCard.append('ul').attr("class", "list-group list-group-flush")
+//             cardlist.append('li').attr("class", "list-group-item").text(`Cooktime: ${record.cooking_minutes} mins`);
+//             cardlist.append('li').attr("class", "list-group-item").text(`Servings: ${record.servings}`);
+//             cardlist.append('li').attr("class", "list-group-item").text(record.steps[0]);
+//             console.log(record.recipe_steps)
+//             console.log("please work")
+//                     // pic.attr("src", record.image).attr("class", "card-img-top");
+//             });
+//             });
 
-}
+// }

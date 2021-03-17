@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Plan My Week</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename='css/business-casual.min.css')}}" rel="stylesheet">
+
+
+
+    <!-- D3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
+
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3"></span>
+    <span class="site-heading-lower">Anyone Can Cook</span>
+  </h1>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Anyone Can Cook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="about.html">Plan My Week</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="products.html">Build My Pantry</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="store.html">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Begin text box and customer selections -->
+  <section class="page-section about-heading">
+    <div class="container">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{url_for('static', filename='img/red_pot.jpg')}}" alt=""><!-- Smaller Picture -->
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 mx-auto">
+            <div class="bg-faded rounded p-5">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Customized Recipes</span>
+                <span class="section-heading-lower">To Fit Your Life</span>
+              </h2>
+              <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
+              <p class="mb-0">We guarantee that you will fall in <em>lust</em> with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.</p>
+              <div class="container">
+<!-- End text box and customer selections -->
+
+<!-- Begin Choosing  Item, Cuisine, Type of Dish, Diet Type, and Intolerances -->
+<div class="container forget-password">
+  <div class="row">
+      <div class="col-md-12 col-md-offset-4">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div class="text-center">
+
+                      <h2 class="text-center"></h2>
+                      <p></p>
+                      <form id="filter-form" role="form" autocomplete="off" class="form">
+                          <div class="form-group">
+ <!-- Cuisine -->             <div class="input-group">
+                                  <select class="form-control" id="cuisine">
+                                      <option selected="true" disabled="disabled" value="&">SELECT A CUISINE</option>
+                            
+                                      <option value = "American">American</option>
+                                      <option value = "African">African</option>
+                                      <option value = "British">British</option>
+                                      <option value="Cajun">Cajun</option>
+                                      <option value="Caribbean">Caribbean</option>
+                                      <option value="Eastern European">Eastern European</option>
+                                      <option value="European">European</option>
+                                      <option value="French">French</option>
+                                      <option value="German">German</option>
+                                      <option value="Greek">Greek</option>
+                                      <option value="Indian">Indian</option>
+                                      <option value="Irish">Irish</option>
+                                      <option value="Italian">Italian</option>
+                                      <option value="Japanese">Japanese</option>
+                                      <option value="Jewish">Jewish</option>
+                                      <option value="Korean">Korean</option>
+                                      <option value="Latin American">Latin American</option>
+                                      <option value="Mediterranean">Mediterranean</option>
+                                      <option value="Middle Eastern">Middle Eastern</option>
+                                      <option value="Nordic">Nordic</option>
+                                      <option value="Southern">Southern</option>
+                                      <option value="Spanish">Spanish</option>
+                                      <option value="Thai">Thai</option>
+                                      <option value="Vietnamese">Vietnamese</option>
+                                  </select>
+                              </div>
+
+<!-- Type of Dish -->       <div class="input-group">
+                                <select class="form-control" id="type_of_recipe">
+                                    <option selected="true" disabled="disabled" value="&">SELECT A TYPE OF DISH</option>
+                                    
+                                    <option value="maincourse">Main course</option>                      
+                                    <option value="sidedish">Side dish</option>
+                                    <option value="dessert">Dessert</option>
+                                    <option value="appetizer">Appetizer</option>
+                                    <option value="salad">Salad</option>
+                                    <option value="bread">Bread</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="soup">Soup</option>
+                                    <option value="beverage">Beverage</option>
+                                    <option value="sauce">Sauce</option>
+                                    <option value="marinade">Marinade</option>
+                                    <option value="fingerfood">Fingerfood</option>
+                                    <option value="snack">Snack</option>
+                                    <option value="drink">Drink</option>
+                                </select>
+                            </div>
+
+<!-- Diet Type -->          <div class="input-group">
+                              <select class="form-control" id="diet">
+                                  <option selected="true" disabled="disabled" value="&">SELECT A DIET TYPE</option>
+                                  
+                                  <option value= "Gluten Free">Gluten Free</option>
+                                  <option value = "Ketognic">Ketogenic</option>
+                                  <option value = "Vegetarian">Vegetarian</option>
+                                  <option value = "Lacto Vegetarian">Lacto Vegetarian</option>
+                                  <option value = "Ovo Vegetarian">Ovo Vegetarian</option>
+                                  <option value = "Vegan">Vegan</option>
+                                  <option value = "Pescetarian">Pescetarian</option>
+                                  <option value = "Paleo">Paleo</option>
+                                  <option value = "Primal">Primal</option>
+                                  <option value = "Whole 30">Whole 30</option>
+                              </select>
+                          </div>
+
+ <!-- Intolerances-->     <div class="input-group">
+                              <select class="form-control" id="intolerances">
+                                  <option selected="true" disabled="disabled" value="&">SELECT AN INTOLERANCE</option>
+                                  
+                                  <option value= "Dairy">Dairy</option>
+                                  <option value= "Egg">Egg</option>
+                                <option value= "Gluten">Gluten</option>
+                                <option value= "Grain">Grain</option>
+                                <option value= "Peanut">Peanut</option>
+                                <option value= "Seafood">Seafood</option>
+                                <option value= "Sesame">Sesame</option>
+                                <option value= "Shellfish">Shellfish</option>
+                                <option value= "Soy">Soy</option>
+                                <option value= "Sulfite">Sulfite</option>
+                                <option value= "Tree Nut">Tree Nut</option>
+                                <option value= "Wheat">Wheat</option>
+                              </select>
+                          </div>
+                          
+<!-- Item-->              <div class="form-group">
+                           
+                            
+                                  <input id="query"  placeholder="WHAT DO YOU FEEL LIKE EATING?" class="form-control"  type="text">
+                               
+                            
+                          </div>
+
+<!-- Buttons -->          <div class="form-group">
+                              <button id="filter-btn" name="filterButton" class="btn btn-lg btn-primary btn-block">Show Me My Recipes</button>
+                          </div>
+<!-- Buttons -->          <div class="form-group">
+                            <input id="reset-btn"name="btnForget" class="btn btn-lg btn-primary btn-block" value="Clear Selections" type="submit">
+                          </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Begin Recipe Table-->
+<div class="container">           
+  <table id= recipe-table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Recipe Title</th>
+        <th>Calories</th>
+        <th>Servings</th>
+        <th>'Ready In' Minutes</th>
+      </tr>
+    </thead>
+    <tbody id='recipetable'></tbody>
+  </table>
+</div>
+<!-- End Recipe Table-->
+<div class="input-group">
+  <select class="form-control" id="dayofweek">
+  <option selected="true" disabled="disabled" value="&">SELECT A DAY OF THE WEEK</option>
+  <option value="Sunday">Sunday</option>
+  <option value="Monday">Monday</option>
+  <option value="Tuesday">Tuesday</option>
+  <option value="Wednesday">Wednesday</option>
+  <option value="Thursday">Thursday</option>
+  <option value="Friday">Friday</option>
+  <option value="Saturday">Saturday</option>                        
+  </select>
+</div>
+
+
+<!-- Buttons -->          
+<div class="form-group">
+  <input id="weekplan-btn" name="btnForget" class="btn btn-lg btn-primary btn-block" value="Add to My Weekly Planner" type="submit">
+</div>
+
+<!-- Begin Weekly Planner Table-->
+<div class="container">           
+  <table id= recipe-table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+    </thead>
+    <tbody id='weekplan-tbody'>
+      <tr>
+        <td id='td-sunday'></td>
+        <td id='td-monday'></td>
+        <td id='td-tuesday'></td>
+        <td id='td-wednesday'></td>
+        <td id='td-thursday'></td>
+        <td id='td-friday'></td>
+        <td id='td-saturday'></td>      
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- End Weekly Planner Table-->
+
+<!-- Buttons -->          <div class="form-group">
+  <input name="btnForget" class="btn btn-lg btn-primary btn-block btnForget" value="Review My Recipes" type="submit">
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Judicious Dartlings 2021</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Custom javascript template -->
+  <script src="{{url_for('static', filename='js/app.js')}}"></script>
+
+</body>
+
+</html>
