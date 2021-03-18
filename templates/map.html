@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Giant Food Stores</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Bootstrap JS Jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />>
+
+      <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+
+  <!-- Leaflet MarkerCluster CSS JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.js" integrity="sha512-pWPELjRaw2ZdoT0PDi7iRpRlk1XX3rtnfejJ/HwskyojpHei+9hKpwdphC4yssNt4FM0TjMQOmMrk6ZYSn274w==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster-src.js" integrity="sha512-w723zcYYjSbDiK8aVmNSoCudkQDrmZF8tcZdaQ5F45WOiyupwNRm4heoQmXhEd0dfFJBnn8i347T7Aamg29PzQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster-src.min.js" integrity="sha512-aEMGwcHMGYn+Ctwcw0qhmIsZnjfkZRSBv00CWyTRVQl7KcoQSJHbyYyU2ZldYEUkpI9GMwKCxtmB6YeTHiD2CQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.min.js" integrity="sha512-8/nLM89o+U+gWYH4orGbC8qlD/3A4JGHarcJ+PSkrkJ3r2a9/2GdXZNidl5pcBvZ/AGqUiBLBg3BUBH4sUzXow==" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.css" integrity="sha512-6ZCLMiYwTeli2rVh3XAPxy3YoR5fVxGdH/pz+KMCzRY2M65Emgkw00Yqmhh8qLGeYQ3LbVZGdmOX9KUjSKr0TA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.min.css" integrity="sha512-fYyZwU1wU0QWB4Yutd/Pvhy5J1oWAwFXun1pt+Bps04WSe4Aq6tyHlT4+MHSJhD8JlLfgLuC4CbCnX5KHSjyCg==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.css" integrity="sha512-mQ77VzAakzdpWdgfL/lM1ksNy89uFgibRQANsNneSTMD/bj0Y/8+94XMwYhnbzx8eki2hrbPpDm0vD0CiT2lcg==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.min.css" integrity="sha512-ENrTWqddXrLJsQS2A86QmvA17PkJ0GVm1bqj5aTgpeMAfDKN2+SIOLpKG8R/6KkimnhTb+VW5qqUHB/r1zaRgg==" crossorigin="anonymous" />
+
+  <!-- D3 JS -->
+  <script src="https://d3js.org/d3.v6.min.js"></script> 
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      
+      <a class="navbar-brand" href="#">Anyone Can Cook</a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col-md-3" style='margin-top: 40px;'>
+          <div class="card">
+            <div class="card-header";'>
+              <p class="card-title" style='text-align: center; color: rgb(0, 0, 0);'>User Selections</p>
+            </div>
+            <div id="chosen-zip-radius" class="card-body bg-light"></div>
+          </div>
+        </div>  
+
+        <form class="range-field w-25">
+          <!-- <input id="distance" data-slider-id="ex1Slider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
+          <label for="slider-2">Search Radius (miles)</label>
+          <input type="range" name="slider-2" id="distance" min="1" max="20" value="10" data-show-value="true">
+        </form>
+
+        <form id="input-zip" class="form-inline my-2 my-lg-0">
+          <div class="container"> <!-- container -->
+            <div class="row"> <!-- container row -->
+              <div class="col-md-6">
+                <h6>Grocery Stores Nearest You</h6>
+              </div>
+            </div>           
+            <div class="row"> <!-- container row -->
+              <div class="col-md-3">
+                <input id="zip-field" class="form-control mr-sm-2" type="text" type="search" placeholder="e.g. 20500" aria-label="Search">
+              </div>
+              <div class="col-md-3">
+                <button id="zip-btn" class="btn btn-outline-success my-2 my-sm-0" class="btn btn-default" type="button" type="submit">Search Zip Code</button>
+              </div>
+            </div>
+          </div>
+
+
+          
+          
+          
+        </form>
+        
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container"> <!-- container -->
+    <div class="row"> <!-- container row -->
+      <div class="col-md-3">
+        <div class="card"></div>
+          <form>
+
+            
+
+          </form>
+        </div>
+      </div>
+     
+
+       
+
+    </div>> <!-- end of container row -->
+  </div> <!-- end of container -->
+
+  <!-- The div where we will inject our map -->
+  <div id="map" class="container"></div>
+
+
+  <!-- API keys -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+  <!-- Our JS -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/logic.js')}}"></script>
+</body>
+</html>
