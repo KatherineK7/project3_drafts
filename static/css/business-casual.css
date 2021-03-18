@@ -113,6 +113,18 @@ p {
   padding-right: 2rem;
 }
 
+.card {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+#cardColumn {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 .intro {
   position: relative;
 }

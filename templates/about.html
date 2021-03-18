@@ -25,6 +25,9 @@
     <!-- D3 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
 
+  <!-- Custom javascript template -->
+  <script src="{{url_for('static', filename='js/app.js')}}" defer></script>
+
 
 
 </head>
@@ -46,18 +49,21 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+            <a class="nav-link text-uppercase text-expanded" href="{{url_for('home')}}">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="about.html">Plan My Week</a>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{{url_for('about')}}">Plan My Week</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="products.html">Build My Pantry</a>
+            <a class="nav-link text-uppercase text-expanded" href="{{url_for('plots')}}">Build My Pantry</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Contact Us</a>
+            <a class="nav-link text-uppercase text-expanded" href="{{url_for('store')}}">Contact Us</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{{url_for('printpage')}}">Last Page</a>
           </li>
         </ul>
       </div>
@@ -93,108 +99,77 @@
                       <p></p>
                       <form id="filter-form" role="form" autocomplete="off" class="form">
                           <div class="form-group">
- <!-- Cuisine -->             <div class="input-group">
-                                  <select class="form-control" id="cuisine">
-                                      <option selected="true" disabled="disabled" value="&">SELECT A CUISINE</option>
-                            
-                                      <option value = "American">American</option>
-                                      <option value = "African">African</option>
-                                      <option value = "British">British</option>
-                                      <option value="Cajun">Cajun</option>
-                                      <option value="Caribbean">Caribbean</option>
-                                      <option value="Eastern European">Eastern European</option>
-                                      <option value="European">European</option>
-                                      <option value="French">French</option>
-                                      <option value="German">German</option>
-                                      <option value="Greek">Greek</option>
-                                      <option value="Indian">Indian</option>
-                                      <option value="Irish">Irish</option>
-                                      <option value="Italian">Italian</option>
-                                      <option value="Japanese">Japanese</option>
-                                      <option value="Jewish">Jewish</option>
-                                      <option value="Korean">Korean</option>
-                                      <option value="Latin American">Latin American</option>
-                                      <option value="Mediterranean">Mediterranean</option>
-                                      <option value="Middle Eastern">Middle Eastern</option>
-                                      <option value="Nordic">Nordic</option>
-                                      <option value="Southern">Southern</option>
-                                      <option value="Spanish">Spanish</option>
-                                      <option value="Thai">Thai</option>
-                                      <option value="Vietnamese">Vietnamese</option>
-                                  </select>
-                              </div>
+ <!-- Cuisine -->             <ul class="list-group" id="filters">
+                    
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="query">Item</label>
+                        <input class="form-control" id="query" type="text" placeholder="e.g. pasta">                    
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="cuisine">Cuisine</label>
+                        <select id="cuisine">
+                        <option value="&">--choose one--</option>
+                        <option value="American">American</option>
+                        <option value="African">African</option>
+                        <option value="British">British</option>
+                        <option value="Cajun">Cajun</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="Eastern European">Eastern European</option>
+                        <option value="European">European</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Greek">Greek</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Irish">Irish</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Jewish">Jewish</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Latin American">Latin American</option>
+                        <option value="Mediterranean">Mediterranean</option>
+                        <option value="Middle Eastern">Middle Eastern</option>
+                        <option value="Nordic">Nordic</option>
+                        <option value="Southern">Southern</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Vietnamese">Vietnamese</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="calories">Calories</label>
+                        <input class="form-control" id="calories" type="text" placeholder="e.g. 500">
+                      </li>
+                      <li class="filter list-group-item", id="user-input">
+                        <label for="type_of_recipe">Type of Dish</label>
+                        <select id="type_of_recipe">
+                        <option value="&">--choose one--</option>
+                        <option value="maincourse">main course</option>                      
+                        <option value="sidedish">side dish</option>
+                        <option value="dessert">dessert</option>
+                        <option value="appetizer">appetizer</option>
+                        <option value="salad">salad</option>
+                        <option value="bread">bread</option>
+                        <option value="breakfast">breakfast</option>
+                        <option value="soup">soup</option>
+                        <option value="beverage">beverage</option>
+                        <option value="sauce">sauce</option>
+                        <option value="marinade">marinade</option>
+                        <option value="fingerfood">fingerfood</option>
+                        <option value="snack">snack</option>
+                        <option value="drink">drink</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item", id="dropdown-bg-color">
+                        <label for="shape">Ready in Minutes</label>   <!--THIS ID SHOULD BE CHANGED-->
+                        <input class="form-control" id="cookingMinutes" type="text" placeholder="e.g. 30">
+                      </li>
+                      </ul>
 
-<!-- Type of Dish -->       <div class="input-group">
-                                <select class="form-control" id="type_of_recipe">
-                                    <option selected="true" disabled="disabled" value="&">SELECT A TYPE OF DISH</option>
-                                    
-                                    <option value="maincourse">Main course</option>                      
-                                    <option value="sidedish">Side dish</option>
-                                    <option value="dessert">Dessert</option>
-                                    <option value="appetizer">Appetizer</option>
-                                    <option value="salad">Salad</option>
-                                    <option value="bread">Bread</option>
-                                    <option value="breakfast">Breakfast</option>
-                                    <option value="soup">Soup</option>
-                                    <option value="beverage">Beverage</option>
-                                    <option value="sauce">Sauce</option>
-                                    <option value="marinade">Marinade</option>
-                                    <option value="fingerfood">Fingerfood</option>
-                                    <option value="snack">Snack</option>
-                                    <option value="drink">Drink</option>
-                                </select>
-                            </div>
-
-<!-- Diet Type -->          <div class="input-group">
-                              <select class="form-control" id="diet">
-                                  <option selected="true" disabled="disabled" value="&">SELECT A DIET TYPE</option>
-                                  
-                                  <option value= "Gluten Free">Gluten Free</option>
-                                  <option value = "Ketognic">Ketogenic</option>
-                                  <option value = "Vegetarian">Vegetarian</option>
-                                  <option value = "Lacto Vegetarian">Lacto Vegetarian</option>
-                                  <option value = "Ovo Vegetarian">Ovo Vegetarian</option>
-                                  <option value = "Vegan">Vegan</option>
-                                  <option value = "Pescetarian">Pescetarian</option>
-                                  <option value = "Paleo">Paleo</option>
-                                  <option value = "Primal">Primal</option>
-                                  <option value = "Whole 30">Whole 30</option>
-                              </select>
-                          </div>
-
- <!-- Intolerances-->     <div class="input-group">
-                              <select class="form-control" id="intolerances">
-                                  <option selected="true" disabled="disabled" value="&">SELECT AN INTOLERANCE</option>
-                                  
-                                  <option value= "Dairy">Dairy</option>
-                                  <option value= "Egg">Egg</option>
-                                <option value= "Gluten">Gluten</option>
-                                <option value= "Grain">Grain</option>
-                                <option value= "Peanut">Peanut</option>
-                                <option value= "Seafood">Seafood</option>
-                                <option value= "Sesame">Sesame</option>
-                                <option value= "Shellfish">Shellfish</option>
-                                <option value= "Soy">Soy</option>
-                                <option value= "Sulfite">Sulfite</option>
-                                <option value= "Tree Nut">Tree Nut</option>
-                                <option value= "Wheat">Wheat</option>
-                              </select>
-                          </div>
                           
-<!-- Item-->              <div class="form-group">
-                           
-                            
-                                  <input id="query"  placeholder="WHAT DO YOU FEEL LIKE EATING?" class="form-control"  type="text">
-                               
-                            
-                          </div>
+<!-- Item-->              
 
-<!-- Buttons -->          <div class="form-group">
-                              <button id="filter-btn" name="filterButton" class="btn btn-lg btn-primary btn-block">Show Me My Recipes</button>
-                          </div>
-<!-- Buttons -->          <div class="form-group">
-                            <input id="reset-btn"name="btnForget" class="btn btn-lg btn-primary btn-block" value="Clear Selections" type="submit">
-                          </div>
+<!-- Buttons --> 
+                    <button id="filter-btn" type="button" class="btn-lg btn-primary btn-block">Filter Table</button>
 
                       </form>
                   </div>
@@ -241,7 +216,7 @@
 
 <!-- Begin Weekly Planner Table-->
 <div class="container">           
-  <table id= recipe-table class="table table-striped">
+  <table id="weekplan-table" class="table table-striped">
     <thead>
       <tr>
         <th>Sunday</th>
@@ -268,9 +243,9 @@
 </div>
 <!-- End Weekly Planner Table-->
 
-<!-- Buttons -->          <div class="form-group">
-  <input name="btnForget" class="btn btn-lg btn-primary btn-block btnForget" value="Review My Recipes" type="submit">
-</div>
+<!-- Buttons -->          
+  <button id="checkbox-btn" class="btn btn-lg btn-primary btn-block" href="">Review My Recipes</button>
+
 
               </div>
             </div>
@@ -292,8 +267,7 @@
   <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    <!-- Custom javascript template -->
-  <script src="{{url_for('static', filename='js/app.js')}}"></script>
+
 
 </body>
 
