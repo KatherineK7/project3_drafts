@@ -272,3 +272,8 @@ table, td, th  {
   background-color: whitesmoke;
   border-collapse: collapse;
 }
+
+#map {
+  height: 75%;
+  width: 50%;
+}

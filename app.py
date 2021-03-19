@@ -7,6 +7,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from flask import Flask, request, render_template, jsonify
 import pymysql
+from config import gmaps_key, API_KEY
 pymysql.install_as_MySQLdb()
 
 is_heroku = False
@@ -23,6 +24,7 @@ if 'IS_HEROKU' in os.environ:
 else:
     from config import remote_db_endpoint, remote_db_port, remote_db_name, remote_db_user, remote_db_pwd
     from config import x_rapidapi_key, x_rapidapi_host, spoonacular_API
+    
 
 
 ###################################################
@@ -772,6 +774,45 @@ def recipequantities():
 def productsFromScrape():
     products_json = products_subset.to_json(orient='records')
     return(products_json)
+
+@app.route('/map')
+def index():
+    return render_template('map.html')
+
+
+@app.route('/refreshMapTwo')
+def refreshMapTwo():
+    
+    zip = request.args.get('zip')
+
+    # make API call and pass the zip code to get coords
+    zip_url = f'https://maps.googleapis.com/maps/api/geocode/json?key={gmaps_key}&components=postal_code:{zip}'
+  
+    zip_json = requests.get(zip_url).json()
+    
+    return jsonify(zip_json)
+
+
+@app.route('/refreshMap')
+def refreshMap():
+    
+    zip = request.args.get('zip')
+    radius = request.args.get('radius')
+    grocery_name = 'Giant Food'
+
+    # make API call and pass the zip code to get coords
+    zip_url = f'https://maps.googleapis.com/maps/api/geocode/json?key={gmaps_key}&components=postal_code:{zip}'
+  
+    zip_json = requests.get(zip_url).json()
+    
+    zip_lat = zip_json['results'][0]['geometry']['location']['lat']
+    zip_lng = zip_json['results'][0]['geometry']['location']['lng']
+
+    nearby_url = f'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={zip_lat},{zip_lng}&radius={radius}&name={grocery_name}&key={gmaps_key}'
+
+    nearby_json = requests.get(nearby_url).json()['results']
+
+    return jsonify(nearby_json)
 
 if __name__ == '__main__':
     app.run(debug=True)

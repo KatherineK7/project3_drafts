@@ -31,6 +31,34 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 
+ <!-- Leaflet CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+ integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+ crossorigin="" />>
+
+   <!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
+
+<!-- Leaflet MarkerCluster CSS JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.js" integrity="sha512-pWPELjRaw2ZdoT0PDi7iRpRlk1XX3rtnfejJ/HwskyojpHei+9hKpwdphC4yssNt4FM0TjMQOmMrk6ZYSn274w==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster-src.js" integrity="sha512-w723zcYYjSbDiK8aVmNSoCudkQDrmZF8tcZdaQ5F45WOiyupwNRm4heoQmXhEd0dfFJBnn8i347T7Aamg29PzQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster-src.min.js" integrity="sha512-aEMGwcHMGYn+Ctwcw0qhmIsZnjfkZRSBv00CWyTRVQl7KcoQSJHbyYyU2ZldYEUkpI9GMwKCxtmB6YeTHiD2CQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.min.js" integrity="sha512-8/nLM89o+U+gWYH4orGbC8qlD/3A4JGHarcJ+PSkrkJ3r2a9/2GdXZNidl5pcBvZ/AGqUiBLBg3BUBH4sUzXow==" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.css" integrity="sha512-6ZCLMiYwTeli2rVh3XAPxy3YoR5fVxGdH/pz+KMCzRY2M65Emgkw00Yqmhh8qLGeYQ3LbVZGdmOX9KUjSKr0TA==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.min.css" integrity="sha512-fYyZwU1wU0QWB4Yutd/Pvhy5J1oWAwFXun1pt+Bps04WSe4Aq6tyHlT4+MHSJhD8JlLfgLuC4CbCnX5KHSjyCg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.css" integrity="sha512-mQ77VzAakzdpWdgfL/lM1ksNy89uFgibRQANsNneSTMD/bj0Y/8+94XMwYhnbzx8eki2hrbPpDm0vD0CiT2lcg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.min.css" integrity="sha512-ENrTWqddXrLJsQS2A86QmvA17PkJ0GVm1bqj5aTgpeMAfDKN2+SIOLpKG8R/6KkimnhTb+VW5qqUHB/r1zaRgg==" crossorigin="anonymous" />
+
+<!-- D3 JS -->
+<script src="https://d3js.org/d3.v6.min.js"></script> 
+
+<!-- Our CSS -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+
+
 </head>
 <body>
 
@@ -67,7 +95,7 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{{url_for('store')}}">Contact Us</a>
           </li>
-          <li class="nav-item px-lg-4">
+          <li class="nav-item active px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{{url_for('printpage')}}">Last Page</a>
           </li>
         </ul>
@@ -76,43 +104,104 @@
   </nav>
 
 <!-- Begin text box and customer selections -->
-<section class="page-section about-heading">
+
+
+<section class="page-section">
+  
+
   <div class="container">
-    <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/plan_my_week_01.jpg" alt=""><!-- Smaller Picture -->
-    <div class="about-heading-content">
-      <div class="row">
-        <div class="col-xl-9 col-lg-10 mx-auto">
-          <div class="bg-faded rounded p-5">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Words Go Here</span>
-              <span class="section-heading-lower">...and also here</span>
-            </h2>
-            <p>Explanation of Build My Pantry Page.</p>
-            <p class="mb-0">More words <em>italicized word</em> additional words.</p>
-            <div class="container">
-<!-- End text box and customer selections -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      
+      
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col-md-3" style='margin-top: 40px;'>
+          <div class="card">
+            <div class="card-header";>
+              <p class="card-title" style='text-align: center; color: rgb(0, 0, 0);'>User Selections</p>
+            </div>
+            <div id="chosen-zip-radius" class="card-body bg-light"></div>
+          </div>
+        </div>  
+
+        <form class="range-field w-25">
+          <!-- <input id="distance" data-slider-id="ex1Slider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
+          <label for="slider-2">Search Radius (miles)</label>
+          <input type="range" name="slider-2" id="distance" min="1" max="20" value="10" data-show-value="true">
+        </form>
+
+        <form id="input-zip" class="form-inline my-2 my-md-0">
+          <div class="container"> <!-- container -->
+            <!-- <div class="row"> 
+              <div class="col-md-6">
+                <h6>Grocery Stores Nearest You</h6>
+              </div>
+            </div>            -->
+            <div class="row"> <!-- container row -->
+              <div class="col-md-3">
+                <input id="zip-field" class="form-control mr-sm-2" type="text" type="search" placeholder="e.g. 20500" aria-label="Search">
+              </div>
+              <div class="col-sm-1 ml-auto"></div>
+                <button id="zip-btn" class="btn btn-outline-success my-2 my-sm-0" class="btn btn-default" type="button" type="submit">Search Zip Code</button>
             </div>
           </div>
+
+
+          
+          
+          
+        </form>
+        
+      </div>
+    </nav>
+  </div>
+
+
+
+  <!-- The div where we will inject our map -->
+
+
+
+
+</section>
+
+
+
+
+
+
+<div id="map" class="container"></div>
+
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex ml-auto rounded">
+          <h2 class="section-heading mb-0">
+            <span class="section-heading-upper">Stuff</span>
+            
+          </h2>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-
-
-
-  
 </section>
-<!-- End 'Merica, Southern Food Text Box and Bar Graph -->
 
 
-
-
-  <footer class="footer text-faded text-center py-5">
+ <!-- API keys -->
+ <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+ <!-- Our JS -->
+ <script type="text/javascript" src="{{url_for('static', filename='js/logic.js')}}"></script>
+  <!-- <footer class="footer text-faded text-center py-5">
     <div class="container">
       <p class="m-0 small">Copyright &copy; Judicious Dartlings 2021</p>
     </div>
-  </footer>
+  </footer> -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
