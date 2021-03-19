@@ -383,6 +383,30 @@ function ingredientsAPIreturn(selectedRecipeIDs){
     
 };
 
+d3.select("#final-btn").on("click", function() {
+
+    console.log('clicked btn');
+
+    ingredientsToLastPage = [];    
+
+    ingredients2 = d3.selectAll('.ingredient-checkbox:checked') // .selectAll('p');    
+    console.log(ingredients2);
+
+    ingredients2.each(function() {
+        ingredientsToLastPage.push(this.id);
+    });
+
+    console.log('this is what you will pass to the last page');
+    console.log(ingredientsToLastPage);       
+
+
+    filteredIngredientList = ingredientsToLastPage.toString();
+
+    // try to go another page
+    // LINE BELOW SHOULD BE COMMENTED OUT TO SEE CONSOLE LOGS TO VERIFY WE'RE CAPTURING CHECKED INGREDIENTS LIST
+    window.location.href = `/lastPage?ingredients=${filteredIngredientList}`;
+
+});
 
 // /////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////
@@ -410,32 +434,80 @@ function buildGroceriesTable() {
         console.log(' --- Ingredient data from /api/ingredients --- ')
         console.log(groceries);
 
+        /////////////////////////////////////////////////////////////////////////
+        // NEW BROOKE COOPER ADDITION ///////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
+        // PROJECT 3 ADDITION ///////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
+        // 20210312 - calling this function within the promise to ensure that 
+        //              the event listener is attached before the elements is "destroyed" in the DOM
+        activateTableEventListeners();
+        /////////////////////////////////////////////////////////////////////////
 
-        groceries.forEach(record => {
-            console.log('this is going in the table');
-            console.log(record);
-            priceTotal.push(parseInt(record.price))
-            var row = tbody2.append('tr');
-            ////logic: if checked -- identify the status as checked and if not set status to unchecked; add a status true or flase to records pulled from API
-                // function that counts the number of recipes and then assigns an number incrementing by 1
-                
-                row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['ingredient']}`).attr('class', 'ingredient-checkbox');
-                // row.append('td').text(record['recipe_title']);
-                row.append('td').text(record['ingredient']);
-                // row.append('td').text(record['price']);
-                row.append('td').text(record['ingredient_title']);
-                // row.append('td').text(record['size']);            
-                console.log(record);
-    
+        ////////////////////////////////////+++++++++++++++++++++++++++++++++++++
+        // NEW BROOKE COOPER ADDITION //////+++++++++++++++++++++++++++++++++++++
+        ////////////////////////////////////+++++++++++++++++++++++++++++++++++++
+
+        console.log(groceries);
+        console.log(typeof groceries);
+        console.log(groceries.ingredient);
+
+        groceries.sort(function(a, b) {
+
+            if(a.ingredient < b.ingredient) {
+                return -1
+            }
+            else if (b.ingredient < a.ingredient) {
+                return 1
+            }
         });
+
+        console.log(groceries);
+
+        for(i = 0; i < groceries.length; i++) {
+
+            record = groceries[i];
+
+            priceTotal.push(parseInt(record.price))
+
+            console.log('this is going in the table');
+
+            var row;
+            if(i % 3 == 0) {
+                row = tbody2.append('tr');
+            }
+            ////logic: if checked -- identify the status as checked and if not set status to unchecked; add a status true or flase to records pulled from API
+            // function that counts the number of recipes and then assigns an number incrementing by 1
+
+            row.append('td').append('input').attr("type", "checkbox").attr('id', `${record['ingredient']}`).attr('class', 'ingredient-checkbox');
+            // row.append('td').text(record['recipe_title']);
+            row.append('td').text(record['ingredient']);
+            // row.append('td').text(record['price']);
+            // row.append('td').text(record['ingredient_title']);
+            // row.append('td').text(record['size']);            
+            console.log(record);
+             
+        }
+
+        checkAll();        
+
+        function checkAll(){
+            d3.selectAll('.ingredient-checkbox').attr('checked','true');
+        };
+        ////////////////////////////////////+++++++++++++++++++++++++++++++++++++
+        ////////////////////////////////////+++++++++++++++++++++++++++++++++++++
+        ////////////////////////////////////+++++++++++++++++++++++++++++++++++++
+        
+        /*
         var totalSum = d3.sum(priceTotal)
         console.log(totalSum)
         var priceRow = pricetbody.append('tr');
         priceRow.append('td').text(`$${totalSum}`)
+        */
 
     });
    
-}
+};
 
 var cardrow = d3.select("#cardrow")
 
