@@ -148,9 +148,9 @@ function recipemetadataAPIreturn(){
     // capture value for all search fields */
     var query = d3.select('#query').property('value');
     var cuisine = d3.select('#cuisine').property('value');
-    var type_of_recipe = d3.select('#type_of_recipe').property('value');
-    // var calories = d3.select('#calories').property('value');    
-    // var cookingMinutes = d3.select('#cookingMinutes').property('value');
+    var diet = d3.select('#diet').property('value'); 
+    var type_of_recipe = d3.select('#type_of_recipe').property('value');   
+    var intolerances = d3.select('#intolerances').property('value');
 
     var filterFields
 
@@ -158,9 +158,9 @@ function recipemetadataAPIreturn(){
     var filterFields = {
         'query': query,
         'cuisine': cuisine,
-        'type_of_recipe': type_of_recipe, 
-        // 'calories': calories,
-        // 'cookingMinutes': cookingMinutes
+        'diet': diet,
+        'type_of_recipe': type_of_recipe,
+        'intolerances': intolerances
     }
 
     // Remove empty keys from the list of filters to search
@@ -179,13 +179,11 @@ function recipemetadataAPIreturn(){
     // RETURNS query results from Spoonacular API via Flask Flask API/recipemetadata route
     // which POPULATES the returned data into our page 1 table using refreshTable() function
 
-    d3.json(`/api/recipemetadata?query=${query}&cuisine=${cuisine}&type_of_recipe=${type_of_recipe}&`, function(data){
-        console.log(data);
+    d3.json(`/api/recipemetadata?query=${query}&cuisine=${cuisine}&diet=${diet}&type_of_recipe=${type_of_recipe}&intolerances=${intolerances}&`, function(data){
+        console.log(diet);
         refreshTable(data); 
     });
-
     activateTableEventListeners()
-
 }
 
 
@@ -305,7 +303,10 @@ weekplanbtn = d3.select('#weekplan-btn');  //////////// PROJECT3 ADDITION
 resetbtn = d3.select('#reset-btn');
 queryfield = d3.select('#query');
 cuisinefield = d3.select('#cuisine');
+dietfield = d3.select('#diet');
 typeofrecipefield = d3.select('#type_of_recipe');
+intolerancesfield = d3.select('#intolerances');
+
 
 // calories = d3.select('#calories');
 // cookingminutesfield = d3.select('#cookingMinutes');
@@ -316,7 +317,9 @@ weekplanbtn.on('click', addRecipeWeekplan); //////////// PROJECT3 ADDITION
 resetbtn.on('click', formReset);
 queryfield.on('change', recipemetadataAPIreturn);
 cuisinefield.on('change', recipemetadataAPIreturn);
+dietfield.on('change', recipemetadataAPIreturn);
 typeofrecipefield.on('change', recipemetadataAPIreturn);
+intolerancesfield.on('change', recipemetadataAPIreturn);
 // calories.on('change', recipemetadataAPIreturn);
 // cookingminutesfield.on('change', recipemetadataAPIreturn);
 
@@ -460,6 +463,10 @@ function work() {
             cardlist.append('li').attr("class", "list-group-item").text(`Cooktime: ${record.cooking_minutes} mins`);
             cardlist.append('li').attr("class", "list-group-item").text(`Servings: ${record.servings}`);
             cardlist.append('li').attr("class", "list-group-item").text(record.steps[0]);
+            //cardlist.append('button').attr("id", "collapseOne").attr("class", "btn btn-link").attr("data-toggle", "collapse").attr("data-target", "#collapseOne").attr("aria-expanded", "true").attr("aria-controls", "collapseOne").text("Click for Instructions");
+            // newCard.append('div').attr("id", "collapseOne").attr("class", "collapseShow").attr("aria-labelledby", "instructionbutton").attr("data-parent", "newCard").text("hi")
+
+
             cardrow.append('div').attr("class", "col-sm-1");
             // console.log(record.recipe_steps)
             // console.log("please work")
@@ -468,6 +475,11 @@ function work() {
             });
 
 }
+
+function herewego () {
+    console.log(recipe_ids);
+    console.log("here we go")
+};
 
 work()
 buildGroceriesTable()

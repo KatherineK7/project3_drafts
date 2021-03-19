@@ -67,9 +67,9 @@ crossorigin=""></script>
     <span class="site-heading-lower">Anyone Can Cook</span>
   </h1>
 
-    <!-- Valerie's -->
-    <script src="{{url_for('static', filename='js/plots.js')}}"></script>
-  <!-- End Valerie's-->
+    
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+ 
   
 
   <!-- Navigation -->
@@ -128,41 +128,42 @@ crossorigin=""></script>
           </div>
         </div>  
 
-        <form class="range-field w-25">
-          <!-- <input id="distance" data-slider-id="ex1Slider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
-          <label for="slider-2">Search Radius (miles)</label>
-          <input type="range" name="slider-2" id="distance" min="1" max="20" value="10" data-show-value="true">
-        </form>
+        
+        <!-- <input id="distance" data-slider-id="ex1Slider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
+        <label for="slider-2">Search Radius (miles)</label>
+        <input type="range" name="slider-2" id="distance" min="1" max="20" value="10" data-show-value="true">
+        <span id='slider-val'></span>
+        
 
-        <form id="input-zip" class="form-inline my-2 my-md-0">
-          <div class="container"> <!-- container -->
-            <!-- <div class="row"> 
-              <div class="col-md-6">
-                <h6>Grocery Stores Nearest You</h6>
-              </div>
-            </div>            -->
-            <div class="row"> <!-- container row -->
-              <div class="col-md-3">
-                <input id="zip-field" class="form-control mr-sm-2" type="text" type="search" placeholder="e.g. 20500" aria-label="Search">
-              </div>
-              <div class="col-sm-1 ml-auto"></div>
-                <button id="zip-btn" class="btn btn-outline-success my-2 my-sm-0" class="btn btn-default" type="button" type="submit">Search Zip Code</button>
+        
+        <div class="container"> <!-- container -->
+          <!-- <div class="row"> 
+            <div class="col-md-6">
+              <h6>Grocery Stores Nearest You</h6>
             </div>
+          </div>            -->
+          <div class="row"> <!-- container row -->
+            <div class="col-md-3">
+              <input id="zip-field" class="form-control mr-sm-2" type="text" type="search" placeholder="e.g. 20500" aria-label="Search">
+            </div>
+            <div class="col-sm-1 ml-auto"></div>
+              <button id="zip-btn" class="btn btn-outline-success my-2 my-sm-0" class="btn btn-default" type="button" type="submit">Search Zip Code</button>
           </div>
+        </div>
 
 
-          
-          
-          
-        </form>
+        
+        
+        
+      
         
       </div>
     </nav>
   </div>
 
+  <!-- <script src="{{url_for('static', filename='js/app.js')}}"> herewego() </script> -->
 
-
-  <!-- The div where we will inject our map -->
+ 
 
 
 
@@ -173,8 +174,12 @@ crossorigin=""></script>
 
 
 
-
-<div id="map" class="container"></div>
+<div class="container">
+  <div class='row'>
+    <div class='col-md-12'>
+      <div id="map" style='width: 100%; height: 400px'></div>
+  </div>
+</div>
 
 <section class="page-section">
   <div class="container">
@@ -193,17 +198,17 @@ crossorigin=""></script>
 </section>
 
 
- <!-- API keys -->
+
  <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
- <!-- Our JS -->
+
  <script type="text/javascript" src="{{url_for('static', filename='js/logic.js')}}"></script>
-  <!-- <footer class="footer text-faded text-center py-5">
+  <footer class="footer text-faded text-center py-5">
     <div class="container">
       <p class="m-0 small">Copyright &copy; Judicious Dartlings 2021</p>
     </div>
-  </footer> -->
+  </footer>
 
-  <!-- Bootstrap core JavaScript -->
+
   <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

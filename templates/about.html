@@ -101,10 +101,7 @@
                           <div class="form-group">
  <!-- Cuisine -->             <ul class="list-group" id="filters">
                     
-                      <li class="filter list-group-item", id="dropdown-bg-color">
-                        <label for="query">Item</label>
-                        <input class="form-control" id="query" type="text" placeholder="e.g. pasta">                    
-                      </li>
+    
                       <li class="filter list-group-item">
                         <label for="cuisine">Cuisine</label>
                         <select id="cuisine">
@@ -135,33 +132,63 @@
                         <option value="Vietnamese">Vietnamese</option>
                         </select>
                       </li>
-                      <li class="filter list-group-item", id="dropdown-bg-color">
-                        <label for="calories">Calories</label>
-                        <input class="form-control" id="calories" type="text" placeholder="e.g. 500">
+                      <li class="filter list-group-item">
+                        <label for="diet">Select a Diet Type</label>
+                        <select id="diet">
+                          <option value="&">--choose one--</option>
+                          <option value= "Gluten Free">Gluten Free</option>
+                          <option value = "Ketognic">Ketogenic</option>
+                          <option value = "Vegetarian">Vegetarian</option>
+                          <option value = "Lacto Vegetarian">Lacto Vegetarian</option>
+                          <option value = "Ovo Vegetarian">Ovo Vegetarian</option>
+                          <option value = "Vegan">Vegan</option>
+                          <option value = "Pescetarian">Pescetarian</option>
+                          <option value = "Paleo">Paleo</option>
+                          <option value = "Primal">Primal</option>
+                          <option value = "Whole 30">Whole 30</option>
+                        </select>
                       </li>
                       <li class="filter list-group-item", id="user-input">
-                        <label for="type_of_recipe">Type of Dish</label>
+                        <label for="type_of_recipe">Select a Type of Dish</label>
                         <select id="type_of_recipe">
                         <option value="&">--choose one--</option>
-                        <option value="maincourse">main course</option>                      
-                        <option value="sidedish">side dish</option>
-                        <option value="dessert">dessert</option>
-                        <option value="appetizer">appetizer</option>
-                        <option value="salad">salad</option>
-                        <option value="bread">bread</option>
-                        <option value="breakfast">breakfast</option>
-                        <option value="soup">soup</option>
-                        <option value="beverage">beverage</option>
-                        <option value="sauce">sauce</option>
-                        <option value="marinade">marinade</option>
-                        <option value="fingerfood">fingerfood</option>
-                        <option value="snack">snack</option>
-                        <option value="drink">drink</option>
+                        <option value="maincourse">Main Course</option>                      
+                        <option value="sidedish">Side Dish</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="appetizer">Appetizer</option>
+                        <option value="salad">Salad</option>
+                        <option value="bread">Bread</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="soup">Soup</option>
+                        <option value="beverage">Beverage</option>
+                        <option value="sauce">Sauce</option>
+                        <option value="marinade">Marinade</option>
+                        <option value="fingerfood">Fingerfood</option>
+                        <option value="snack">Snack</option>
+                        <option value="drink">Drink</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item", id="user-input">
+                        <label for="intolerances">Select an Intolerance</label> 
+                        <select id="intolerances">
+                        <option value="&">--choose one--</option>
+                        <option value= "Dairy">Dairy</option>
+                        <option value= "Egg">Egg</option>
+                        <option value= "Gluten">Gluten</option>
+                        <option value= "Grain">Grain</option>
+                        <option value= "Peanut">Peanut</option>
+                        <option value= "Seafood">Seafood</option>
+                        <option value= "Sesame">Sesame</option>
+                        <option value= "Shellfish">Shellfish</option>
+                        <option value= "Soy">Soy</option>
+                        <option value= "Sulfite">Sulfite</option>
+                        <option value= "Tree Nut">Tree Nut</option>
+                        <option value= "Wheat">Wheat</option>
                         </select>
                       </li>
                       <li class="filter list-group-item", id="dropdown-bg-color">
-                        <label for="shape">Ready in Minutes</label>   <!--THIS ID SHOULD BE CHANGED-->
-                        <input class="form-control" id="cookingMinutes" type="text" placeholder="e.g. 30">
+                        <label for="query">What do you want to eat?</label>
+                        <input class="form-control" id="query" type="text" placeholder="e.g. pasta">                    
                       </li>
                       </ul>
 
@@ -240,11 +267,15 @@
       </tr>
     </tbody>
   </table>
+
+
 </div>
 <!-- End Weekly Planner Table-->
 
+<button id="checkbox-btn" class="btn btn-lg btn-primary btn-block" href="">Review My Recipes</button>
+
 <!-- Buttons -->          
-  <button id="checkbox-btn" class="btn btn-lg btn-primary btn-block" href="">Review My Recipes</button>
+  
 
 
               </div>

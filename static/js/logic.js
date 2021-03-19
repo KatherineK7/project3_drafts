@@ -21,7 +21,7 @@ function buildMap(inputLatLng) {
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
-    id: "dark-v10",
+    id: "light-v10",
     accessToken: API_KEY
   });
   
@@ -283,6 +283,12 @@ zipbtn = d3.select('#zip-btn');
 
 
 // Add event listeners to the web elements
-// zipfield.on('change', refreshMap);
+zipfield.on('change', refreshMap);
 zipbtn.on('click', refreshMap);
 
+
+slider = d3.select('#distance');
+slider.on('change', function(){
+  slider_value = slider.node().value;
+  d3.select('#slider-val').text(slider_value);
+})
